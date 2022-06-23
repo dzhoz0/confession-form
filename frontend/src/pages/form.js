@@ -2,7 +2,7 @@ import React from "react";
 import ReactLoading from "react-loading";
 import { Link } from "react-router-dom";
 
-const API_BASE_URL = "https://clb3gu.deta.dev/";
+const API_BASE_URL = process.env.API_BASE;
 
 export default class Form extends React.Component {
   constructor(props) {

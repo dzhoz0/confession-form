@@ -1,8 +1,7 @@
 import moment from "moment";
 import React from "react";
 import ReactLoading from "react-loading";
-const API_BASE_URL = "https://clb3gu.deta.dev/";
-
+const API_BASE_URL = process.env.REACT_APP_API_BASE;
 async function sha256(message) {
   const msgBuffer = new TextEncoder("utf-8").encode(message);
   const hashBuffer = await window.crypto.subtle.digest("SHA-256", msgBuffer);
@@ -25,6 +24,9 @@ export default class Admin extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
 
     this.fetchData = this.fetchData.bind(this);
+  }
+  componentDidMount() {
+    console.log(process.env);
   }
   handlePasswordChange(event) {
     this.setState({ password: event.target.value });
@@ -67,7 +69,7 @@ export default class Admin extends React.Component {
           <tr>
             <td>{i + 1}</td>
             <td>{this.state.data[i].key}</td>
-            <td>{this.state.data[i].content}</td>
+            <td>{this.state.data[i].content} </td>
             <td>
               {moment
                 .unix(this.state.data[i].time / 1000)
