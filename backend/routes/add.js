@@ -15,7 +15,7 @@ async function verifyCaptcha(id, ans) {
     };
     const optionsDel = {
       method: "DELETE",
-      url: api_base + "captcha/items" + id,
+      url: api_base + "captcha/items/" + id,
       headers: { "X-API-Key": project_key },
     };
 

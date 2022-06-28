@@ -14,8 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.get("/", (req, res) => {
-  const api_base = `https://database.deta.sh/v1/${process.env.DETA_PROJECT_ID}}/`;
-  res.send(process.env.ADMIN_PASSWORD);
+  res.send("This is /");
 });
 
 app.use("/", route_captcha);
