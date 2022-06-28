@@ -18,9 +18,14 @@ export default class Form extends React.Component {
     this.handleContentChange = this.handleContentChange.bind(this);
     this.handleCaptchaAnswerChange = this.handleCaptchaAnswerChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.fetchCaptcha = this.fetchCaptcha.bind(this);
   }
 
   componentDidMount() {
+    this.fetchCaptcha();
+  }
+
+  fetchCaptcha() {
     fetch(API_BASE_URL + "captcha/")
       .then((response) => response.json())
       .then((data) => {
@@ -56,6 +61,9 @@ export default class Form extends React.Component {
             error: json.error,
             loading: false,
           });
+          if (json.error === "Failed to verify captcha") {
+            this.fetchCaptcha();
+          }
         }
       });
   }
