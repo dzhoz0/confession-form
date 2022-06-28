@@ -2,7 +2,7 @@ import React from "react";
 import ReactLoading from "react-loading";
 import { Link } from "react-router-dom";
 
-const API_BASE_URL = process.env.API_BASE;
+const API_BASE_URL = process.env.REACT_APP_API_BASE;
 
 export default class Form extends React.Component {
   constructor(props) {
@@ -26,6 +26,7 @@ export default class Form extends React.Component {
   }
 
   fetchCaptcha() {
+    console.log(process.env);
     fetch(API_BASE_URL + "captcha/")
       .then((response) => response.json())
       .then((data) => {
